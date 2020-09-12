@@ -6,6 +6,9 @@ const fileName = 'calendar.ics';
 
 async function downloadFile(url) {
     return new Promise((resolve, reject) => {
+        if (!fs.existsSync(fileDest)) {
+            fs.mkdirSync(fileDest);
+        }
         const file = fs.createWriteStream(fileDest + fileName);
         const request = http.get(url, function(response) {
             response.pipe(file);
