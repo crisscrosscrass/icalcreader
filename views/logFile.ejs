@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>LOGS</title>
+    <style>
+        #output {
+            max-width: 95%;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <pre id="output"></pre>
+    <script>
+        var output = document.getElementById('output');
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'data/file.log', true);
+        xhr.send();
+
+        setInterval(function() {
+            output.textContent = xhr.responseText;
+        }, 100);
+    </script>
+
+</body>
+
+</html>

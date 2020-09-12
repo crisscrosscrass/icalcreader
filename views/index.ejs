@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Personio iCalendar Reader</title>
+    <%- include ('template/meta') %>
+</head>
+
+<body>
+    <div class="hero bg-dark p-5">
+        <hgroup>
+            <a href="https://visual-meta.com/" target="_blank"><img src="/img/VM_Logo_Light.png" class="img-fluid" alt="Responsive image"></a>
+            <h1></h1>
+            <h3 class="text-white">Game Changer 2020</h3>
+        </hgroup>
+    </div>
+    <div class="container">
+        <h1>Personio iCalendar Reader</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="/img/step1.png" class="bd-placeholder-img card-img-top" width="100%" height="225">
+                        <div class="card-body">
+                            <p class="card-text">Login into your Personio Account and select the Calendar View. A new View will appear where you have to click on the Export Button.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Step1</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="/img/step2.png" class="bd-placeholder-img card-img-top" width="100%" height="225">
+                        <div class="card-body">
+                            <p class="card-text">A popup will appear, checkmark the "In the Office" Option. Select "All Departments" and <span class="text-danger">Copy the URL</span> from the Calendar. </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Step2</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="/img/step3.png" class="bd-placeholder-img card-img-top" width="100%" height="225">
+                        <div class="card-body">
+                            <p class="card-text">Select the Date where you want to calculate the Amount of Employees in the Office and paste the URL from the iCalc Personio in it. After that press "Start"</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Step3</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="form-group">
+                <label for="start">Select Date:</label><br/>
+                <input type="date" id="startDate" name="trip-start" class="form-control"><br/>
+                <label for="start">Personio Calendar URL:</label><br/>
+                <input type="text" name="url" id="calendarURL" placeholder="https..." required autofocus class="form-control"><br/>
+                <button class="btn btn-primary" id="downloadFile" type="button" onclick="new ICalendarManager()">Start</button>
+                <button class="btn btn-primary" id="processDownload" type="button" style="display: none;" disabled>
+                <span class="spinner-border spinner-border-sm" role="status"></span>
+                Processing...
+              </button>
+            </div>
+        </div>
+        <div id="outcome">
+
+        </div>
+
+    </div>
+</body>
+
+</html>
