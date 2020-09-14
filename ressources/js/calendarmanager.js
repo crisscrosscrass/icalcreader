@@ -46,7 +46,7 @@ class ICalendarManager {
         xhr.send(data);
     }
     showResults(arrayCollection) {
-        let colors = ["info", "success", "primary", "secondary"];
+        let colors = ["info", "success", "secondary", "primary"];
         let outcome = document.getElementById('outcome');
         let temp = '';
         temp = `<h6>Readed <span class="text-danger">${arrayCollection.events}</span> calendar events</h6>`;

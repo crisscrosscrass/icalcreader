@@ -15,7 +15,11 @@ router.post('/download_file', (req, res) => {
         let searchedDate = req.body.startDate;
         let personioFileUrl = req.body.calendarUrl;
         let downloaded = req.body.downloaded;
-        personioFileUrl.includes(" ") ? personioFileUrl = personioFileUrl.replace(' ', '+') : "";
+        if (personioFileUrl.includes(" ")) {
+            console.log("url contains spaces");
+            personioFileUrl = personioFileUrl.replace(/\s/g, "+");
+            console.log(personioFileUrl);
+        }
         try {
             logger.info("Start Downloading");
             file = await downloadFile(personioFileUrl);

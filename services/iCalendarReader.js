@@ -10,7 +10,7 @@ async function iCalendarReader(today) {
         const fs = require('fs');
         const ical2json = require("ical2json");
         const { unescape } = require('querystring');
-        console.log(fileLocationPath)
+        // console.log(fileLocationPath)
         const fileContent = fs.readFileSync(fileLocationPath, "utf-8");
 
 
@@ -46,7 +46,7 @@ async function iCalendarReader(today) {
         // From ical to JSON
         var output = ical2json.convert(fileContent);
         var events = output.VCALENDAR[0].VEVENT;
-        console.log(output.VCALENDAR[0].VEVENT.length);
+        // console.log(output.VCALENDAR[0].VEVENT.length);
         for (let i = 0; i < events.length; i++) {
             counter++;
             // console.log(events[i]);
@@ -66,6 +66,7 @@ async function iCalendarReader(today) {
         }
 
         console.log(`Read ${counter} calendar events`);
+        // console.log(arrayCollection);
         // remove duplicates
         for (const [key, value] of Object.entries(arrayCollection)) {
             let uniqueSet = new Set(value);
