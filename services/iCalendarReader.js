@@ -3,6 +3,9 @@ const path = require('path');
 const fileDestinNation = path.join(__dirname + '/../downloaded/');
 const fileName = 'calendar.ics';
 const fileLocationPath = fileDestinNation + fileName;
+const getDate = require('./getdate');
+const formattingInputDate = require('./formattinginputdate');
+const isInRange = require('./isinrange');
 
 
 async function iCalendarReader(today) {
@@ -13,18 +16,6 @@ async function iCalendarReader(today) {
         // console.log(fileLocationPath)
         const fileContent = fs.readFileSync(fileLocationPath, "utf-8");
 
-
-        function getDate(date) {
-            // expect to get a String like 20201021
-            date === undefined ? date = "000000" : ""
-            return `${date.slice(4, 6)}/${date.slice(6, 8)}/${date.slice(0, 4)}`;
-        }
-
-        function isInRange(startD, endD, startDate, endDate) {
-            return (startD >= startDate && startD <= endDate) ||
-                (startDate >= startD && startDate <= endD);
-        }
-
         function pushToCollection(collection, name, content) {
             if (collection[name] != undefined) {
                 collection[name].push(content);
@@ -33,10 +24,6 @@ async function iCalendarReader(today) {
                 collection[name].push(content);
             }
             return collection;
-        }
-
-        function formattingInputDate(today) {
-            return `${today.slice(5, 7)}/${today.slice(8, 10)}/${today.slice(0, 4)}`;
         }
 
         today = formattingInputDate(today);
